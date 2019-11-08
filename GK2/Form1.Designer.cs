@@ -59,8 +59,14 @@
             this.radioButtonLightVector = new System.Windows.Forms.RadioButton();
             this.buttonLightColor = new System.Windows.Forms.Button();
             this.groupBoxExtra = new System.Windows.Forms.GroupBox();
+            this.textBoxY = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxX = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkBoxNet = new System.Windows.Forms.CheckBox();
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
+            this.errorProviderX = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderY = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -73,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarKd)).BeginInit();
             this.groupBoxLight.SuspendLayout();
             this.groupBoxExtra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderY)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -308,7 +316,7 @@
             this.groupBoxFactors.Location = new System.Drawing.Point(3, 526);
             this.groupBoxFactors.Name = "groupBoxFactors";
             this.groupBoxFactors.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBoxFactors.Size = new System.Drawing.Size(288, 334);
+            this.groupBoxFactors.Size = new System.Drawing.Size(288, 337);
             this.groupBoxFactors.TabIndex = 3;
             this.groupBoxFactors.TabStop = false;
             this.groupBoxFactors.Text = "Factors:";
@@ -316,7 +324,7 @@
             // radioButtonRandom
             // 
             this.radioButtonRandom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radioButtonRandom.Location = new System.Drawing.Point(10, 284);
+            this.radioButtonRandom.Location = new System.Drawing.Point(10, 287);
             this.radioButtonRandom.Name = "radioButtonRandom";
             this.radioButtonRandom.Size = new System.Drawing.Size(268, 40);
             this.radioButtonRandom.TabIndex = 11;
@@ -327,7 +335,7 @@
             // trackBarM
             // 
             this.trackBarM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.trackBarM.Location = new System.Drawing.Point(10, 228);
+            this.trackBarM.Location = new System.Drawing.Point(10, 231);
             this.trackBarM.Maximum = 100;
             this.trackBarM.Name = "trackBarM";
             this.trackBarM.Size = new System.Drawing.Size(268, 56);
@@ -338,7 +346,7 @@
             // labelM
             // 
             this.labelM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelM.Location = new System.Drawing.Point(10, 211);
+            this.labelM.Location = new System.Drawing.Point(10, 214);
             this.labelM.Name = "labelM";
             this.labelM.Size = new System.Drawing.Size(268, 17);
             this.labelM.TabIndex = 9;
@@ -348,7 +356,7 @@
             // trackBarKs
             // 
             this.trackBarKs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.trackBarKs.Location = new System.Drawing.Point(10, 155);
+            this.trackBarKs.Location = new System.Drawing.Point(10, 158);
             this.trackBarKs.Maximum = 100;
             this.trackBarKs.Name = "trackBarKs";
             this.trackBarKs.Size = new System.Drawing.Size(268, 56);
@@ -359,7 +367,7 @@
             // labelKs
             // 
             this.labelKs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelKs.Location = new System.Drawing.Point(10, 138);
+            this.labelKs.Location = new System.Drawing.Point(10, 141);
             this.labelKs.Name = "labelKs";
             this.labelKs.Size = new System.Drawing.Size(268, 17);
             this.labelKs.TabIndex = 7;
@@ -369,7 +377,7 @@
             // trackBarKd
             // 
             this.trackBarKd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.trackBarKd.Location = new System.Drawing.Point(10, 82);
+            this.trackBarKd.Location = new System.Drawing.Point(10, 85);
             this.trackBarKd.Maximum = 100;
             this.trackBarKd.Name = "trackBarKd";
             this.trackBarKd.Size = new System.Drawing.Size(268, 56);
@@ -382,7 +390,7 @@
             this.labelKd.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelKd.Location = new System.Drawing.Point(10, 65);
             this.labelKd.Name = "labelKd";
-            this.labelKd.Size = new System.Drawing.Size(268, 17);
+            this.labelKd.Size = new System.Drawing.Size(268, 20);
             this.labelKd.TabIndex = 5;
             this.labelKd.Text = "Kd";
             this.labelKd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -407,7 +415,7 @@
             this.groupBoxLight.Controls.Add(this.radioButtonLightVector);
             this.groupBoxLight.Controls.Add(this.buttonLightColor);
             this.groupBoxLight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxLight.Location = new System.Drawing.Point(3, 866);
+            this.groupBoxLight.Location = new System.Drawing.Point(3, 869);
             this.groupBoxLight.Name = "groupBoxLight";
             this.groupBoxLight.Padding = new System.Windows.Forms.Padding(10);
             this.groupBoxLight.Size = new System.Drawing.Size(288, 155);
@@ -455,14 +463,56 @@
             // groupBoxExtra
             // 
             this.groupBoxExtra.AutoSize = true;
+            this.groupBoxExtra.Controls.Add(this.textBoxY);
+            this.groupBoxExtra.Controls.Add(this.label2);
+            this.groupBoxExtra.Controls.Add(this.textBoxX);
+            this.groupBoxExtra.Controls.Add(this.label1);
             this.groupBoxExtra.Controls.Add(this.checkBoxNet);
             this.groupBoxExtra.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxExtra.Location = new System.Drawing.Point(3, 1027);
+            this.groupBoxExtra.Location = new System.Drawing.Point(3, 1030);
             this.groupBoxExtra.Name = "groupBoxExtra";
-            this.groupBoxExtra.Size = new System.Drawing.Size(288, 62);
+            this.groupBoxExtra.Size = new System.Drawing.Size(288, 151);
             this.groupBoxExtra.TabIndex = 5;
             this.groupBoxExtra.TabStop = false;
             this.groupBoxExtra.Text = "Extra:";
+            // 
+            // textBoxY
+            // 
+            this.textBoxY.Location = new System.Drawing.Point(140, 108);
+            this.textBoxY.Name = "textBoxY";
+            this.textBoxY.Size = new System.Drawing.Size(100, 22);
+            this.textBoxY.TabIndex = 4;
+            this.textBoxY.Text = "10";
+            this.textBoxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxY.TextChanged += new System.EventHandler(this.TextBoxY_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 108);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 17);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Points on Y-axis:";
+            // 
+            // textBoxX
+            // 
+            this.textBoxX.Location = new System.Drawing.Point(140, 70);
+            this.textBoxX.Name = "textBoxX";
+            this.textBoxX.Size = new System.Drawing.Size(100, 22);
+            this.textBoxX.TabIndex = 2;
+            this.textBoxX.Text = "10";
+            this.textBoxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxX.TextChanged += new System.EventHandler(this.TextBoxX_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Points on X-axis:";
             // 
             // checkBoxNet
             // 
@@ -479,8 +529,16 @@
             // 
             // timerAnimation
             // 
-            this.timerAnimation.Interval = 10;
+            this.timerAnimation.Interval = 30;
             this.timerAnimation.Tick += new System.EventHandler(this.TimerAnimation_Tick);
+            // 
+            // errorProviderX
+            // 
+            this.errorProviderX.ContainerControl = this;
+            // 
+            // errorProviderY
+            // 
+            this.errorProviderY.ContainerControl = this;
             // 
             // Form1
             // 
@@ -508,6 +566,8 @@
             this.groupBoxLight.ResumeLayout(false);
             this.groupBoxExtra.ResumeLayout(false);
             this.groupBoxExtra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderY)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,6 +607,12 @@
         private System.Windows.Forms.GroupBox groupBoxExtra;
         private System.Windows.Forms.CheckBox checkBoxNet;
         private System.Windows.Forms.Timer timerAnimation;
+        private System.Windows.Forms.TextBox textBoxY;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxX;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProviderX;
+        private System.Windows.Forms.ErrorProvider errorProviderY;
     }
 }
 

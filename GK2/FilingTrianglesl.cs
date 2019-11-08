@@ -76,6 +76,17 @@ namespace GK2
 
         public void FillTriangles(Vertex v = null)
         {
+            foreach(var vert in vertices)
+            {
+                if (fillingType != FillingType.Standard)
+                {
+                    vert.C = GetColor(vert.X, vert.Y);
+                }
+                if (fillingType == FillingType.Hybrid)
+                {
+                    vert.V = GetVector(vert.X, vert.Y);
+                }
+            }
             if (v == null)
                 Parallel.ForEach(triangles, x => x.FillTriangle(this));
             else

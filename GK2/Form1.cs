@@ -18,28 +18,45 @@ namespace GK2
         public Form1()
         {
             InitializeComponent();
+            tableLayoutPanel2.AutoScroll = true;
             buttonPickColor.BackColor = Color.Crimson;
             W = Width;
             H = Height;
-            Grid = new Grid(100, 100, pictureBox1, Color.Crimson);
-
+            Grid = new Grid(10, 10, pictureBox1, Color.Crimson);
         }
 
-        private void CheckBoxNet_CheckedChanged(object sender, EventArgs e)
+        private void TextBoxX_TextChanged(object sender, EventArgs e)
         {
-            Grid.EditingNet = !checkBoxNet.Checked;
-            Grid.UpdateAllGrid();
+            if(int.TryParse(textBoxX.Text,out int n))
+            {
+                if (n < 2)
+                {
+                    errorProviderX.SetError(textBoxX, "Must be greater than 1");
+                    return;
+                }
+                Grid.RowSize = n;
+                errorProviderX.SetError(textBoxX, "");
+                Grid.Resize();
+                return;
+            }
+            errorProviderX.SetError(textBoxX, "Not a number");
         }
 
-        double Time;
-        private void TimerAnimation_Tick(object sender, EventArgs e)
+        private void TextBoxY_TextChanged(object sender, EventArgs e)
         {
-            Time += 0.2;
-            Grid.LightVersor.X = Math.Cos(Time);
-            Grid.LightVersor.Y = Math.Sin(Time);
-            Grid.LightVersor.Z = 1;
-            Grid.LightVersor = Grid.LightVersor / Grid.LightVersor.Length;
-            Grid.UpdateAllGrid();
+            if (int.TryParse(textBoxY.Text, out int n))
+            {
+                if(n<2)
+                {
+                    errorProviderY.SetError(textBoxY, "Must be greater than 1");
+                    return;
+                }
+                Grid.ColumnSize = n;
+                errorProviderY.SetError(textBoxY, "");
+                Grid.Resize();
+                return;
+            }
+            errorProviderY.SetError(textBoxY, "Not a number");
         }
     }
 }

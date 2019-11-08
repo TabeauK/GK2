@@ -21,6 +21,14 @@ namespace GK2
                         Grid.vertices[i, j].Y = (int)(Grid.vertices[i, j].Y * (double)Height / H);
                     }
                 Grid.DB.Resize(pictureBox1.Width, pictureBox1.Height);
+                if(Grid.background!=null)
+                {
+                    Grid.background.Resize(pictureBox1.Width, pictureBox1.Height);
+                }
+                if(Grid.NormalMap!= null)
+                {
+                    Grid.NormalMap.Resize(pictureBox1.Width, pictureBox1.Height);
+                }
                 W = Width;
                 H = Height;
                 Grid.UpdateAllGrid();

@@ -40,9 +40,11 @@ namespace GK2
             if (radioButtonPickFile.Checked == true)
             {
                 buttonPickFile.Enabled = true;
-                Grid.ColorFill = false;
                 if (Grid.background != null)
+                {
+                    Grid.ColorFill = false;
                     Grid.UpdateAllGrid();
+                }
             }
             else
             {
@@ -61,6 +63,7 @@ namespace GK2
             {
                 using (Bitmap bmp = new Bitmap(dialog.FileName))
                     Grid.background = new DirectBitmap(new Bitmap(bmp, Grid.DB.Width, Grid.DB.Height));
+                Grid.ColorFill = false;
                 Grid.UpdateAllGrid();
             }
         }

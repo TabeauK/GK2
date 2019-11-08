@@ -63,14 +63,14 @@ namespace GK2
             int xDistance = (g.pictureBox.Width - 1) / (g.RowSize - 1);
             int yDistance = (g.pictureBox.Height - 2) / (g.ColumnSize - 1);
             g.FillTriangles();
-            if(g.EditingNet)
-            for (int i = 0; i < g.ColumnSize; i++)
-                for (int j = 0; j < g.RowSize; j++)
-                {
-                    g.DrawLine(g.vertices[i, j], i > 0 ? g.vertices[i - 1, j] : null, Color.Black);
-                    g.DrawLine(g.vertices[i, j], j > 0 ? g.vertices[i, j - 1] : null, Color.Black);
-                    g.DrawLine(g.vertices[i, j], (i > 0 && j < (g.RowSize - 1)) ? g.vertices[i - 1, j + 1] : null, Color.Black);
-                }
+            if (g.EditingNet)
+                for (int i = 0; i < g.ColumnSize; i++)
+                    for (int j = 0; j < g.RowSize; j++)
+                    {
+                        g.DrawLine(g.vertices[i, j], i > 0 ? g.vertices[i - 1, j] : null, Color.Black);
+                        g.DrawLine(g.vertices[i, j], j > 0 ? g.vertices[i, j - 1] : null, Color.Black);
+                        g.DrawLine(g.vertices[i, j], (i > 0 && j < (g.RowSize - 1)) ? g.vertices[i - 1, j + 1] : null, Color.Black);
+                    }
             g.pictureBox.Image = g.DB.Bitmap;
             g.pictureBox.Refresh();
         }

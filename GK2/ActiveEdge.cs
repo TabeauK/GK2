@@ -8,11 +8,11 @@ namespace GK2
 {
     class ActiveEdge
     {
-        public int YMax;
+        public readonly int YMax;
         public double XMin;
-        public double M;
-        public Vertex V1;
-        public Vertex V2;
+        Vertex V1;
+        Vertex V2;
+        double M;
         public ActiveEdge(Vertex v1, Vertex v2)
         {
             V1 = v1;

@@ -48,15 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveEdge.cs" />
-    <Compile Include="Background.cs">
+    <Compile Include="BackgroundSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DirectBitmap.cs" />
     <Compile Include="Draw.cs" />
-    <Compile Include="Factors.cs">
+    <Compile Include="ExtraSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Filling.cs">
+    <Compile Include="FactorsSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FillingSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.cs">
@@ -66,14 +69,14 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Grid.cs" />
-    <Compile Include="GridFill.cs" />
-    <Compile Include="Light.cs">
+    <Compile Include="FilingTrianglesl.cs" />
+    <Compile Include="LightSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Moving.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NVector.cs">
+    <Compile Include="NormalMapSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />

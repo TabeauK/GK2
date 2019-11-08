@@ -30,19 +30,6 @@ namespace GK2
             Bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppPArgb, BitsHandle.AddrOfPinnedObject());
         }
 
-        public DirectBitmap(DirectBitmap db)
-        {
-            Width = db.Width;
-            Height = db.Height;
-            Bits = new Int32[db.Width * db.Height];
-            BitsHandle = GCHandle.Alloc(Bits, GCHandleType.Pinned);
-            Bitmap = db.Bitmap.Clone() as Bitmap;
-            for(int i =0;i<Bits.Length;i++)
-            {
-                Bits[i] = db.Bits[i];
-            }
-        }
-
         public DirectBitmap(Bitmap db)
         {
             Width = db.Width;

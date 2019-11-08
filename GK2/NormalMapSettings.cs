@@ -14,7 +14,10 @@ namespace GK2
         {
             if (radioButtonNormalMap.Checked)
             {
-                Grid.UsingNormalMap = true;
+                if(Grid.NormalMap!=null)
+                {
+                    Grid.UsingNormalMap = true;
+                }
                 buttonNormalMap.Enabled = true;
             }
             else
@@ -43,6 +46,7 @@ namespace GK2
             {
                 using (Bitmap bmp = new Bitmap(dialog.FileName))
                     Grid.NormalMap = new DirectBitmap(new Bitmap(bmp, Grid.DB.Width, Grid.DB.Height));
+                Grid.UsingNormalMap = true;
                 Grid.UpdateAllGrid();
             }
         }

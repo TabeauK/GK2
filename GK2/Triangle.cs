@@ -35,39 +35,30 @@ namespace GK2
             Array.Sort(ind, (v1, v2) => v1.v.Y.CompareTo(v2.v.Y));
             int ymin = P[ind[0].index].Y;
             int ymax = P[ind[ind.Length - 1].index].Y;
-            if (g.fillingType != FillingType.Standard)
+
+            void AddRemove(int k,int y)
             {
-                v1.C = g.GetColor(v1.X, v1.Y);
-                v2.C = g.GetColor(v2.X, v2.Y);
-                v3.C = g.GetColor(v3.X, v3.Y);
+                if (P[ind[k + 1 == P.Count ? 0 : k + 1].index].Y == P[ind[k].index].Y)
+                {
+                    Parallel.For(P[ind[k + 1 == P.Count ? 0 : k + 1].index].X, P[ind[k].index].X, x => g.DB.SetPixel(x, P[ind[k].index].Y, g.GetColor(x, P[ind[k].index].Y)));
+                }
+                if (P[ind[k].index].Y == y - 1)
+                {
+                    if (P[ind[k != 0 ? k - 1 : P.Count - 1].index].Y > P[ind[k].index].Y)
+                    {
+                        list.Add(new ActiveEdge(P[ind[k != 0 ? k - 1 : P.Count - 1].index], P[ind[k].index]));
+                    }
+                    if (P[ind[k + 1 == P.Count ? 0 : k + 1].index].Y > P[ind[k].index].Y)
+                    {
+                        list.Add(new ActiveEdge(P[ind[k + 1 == P.Count ? 0 : k + 1].index], P[ind[k].index]));
+                    }
+                    list.RemoveAll(x => x.YMax == y - 1);
+                }
             }
-            if(g.fillingType == FillingType.Hybrid)
-            {
-                v1.V = g.GetVector(v1.X, v1.Y);
-                v2.V = g.GetVector(v2.X, v2.Y);
-                v3.V = g.GetVector(v3.X, v3.Y);
-            }
+
             for (int y = ymin + 1; y < ymax; y++)
             {
-                for (int k = 0; k < P.Count; k++)
-                {
-                    if (P[ind[k + 1 == P.Count ? 0 : k + 1].index].Y == P[ind[k].index].Y)
-                    {
-                        Parallel.For(P[ind[k + 1 == P.Count ? 0 : k + 1].index].X, P[ind[k].index].X, x => g.DB.SetPixel(x, P[ind[k].index].Y, g.GetColor(x, P[ind[k].index].Y)));
-                    }
-                    if (P[ind[k].index].Y == y - 1)
-                    {
-                        if (P[ind[k != 0 ? k - 1 : P.Count - 1].index].Y > P[ind[k].index].Y)
-                        {
-                            list.Add(new ActiveEdge(P[ind[k != 0 ? k - 1 : P.Count - 1].index], P[ind[k].index]));
-                        }
-                        if (P[ind[k + 1 == P.Count ? 0 : k + 1].index].Y > P[ind[k].index].Y)
-                        {
-                            list.Add(new ActiveEdge(P[ind[k + 1 == P.Count ? 0 : k + 1].index], P[ind[k].index]));
-                        }
-                        list.RemoveAll(x => x.YMax == y - 1);
-                    }
-                }
+                Parallel.For(0, P.Count - 1, k => AddRemove(k,y));
                 list.Sort((e1, e2) => e1.XMin.CompareTo(e2.XMin));
                 for (int z = 0; z < list.Count - 1; z += 2)
                 {
@@ -82,7 +73,6 @@ namespace GK2
                 {
                     list[i]++;
                 }
-
             }
         }
     }
