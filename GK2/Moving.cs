@@ -17,8 +17,8 @@ namespace GK2
                 for (int i = 0; i < Grid.vertices.GetLength(0); i++)
                     for (int j = 0; j < Grid.vertices.GetLength(1); j++)
                     {
-                        Grid.vertices[i, j].X = (int)(Grid.vertices[i, j].X * (double)Width / W);
-                        Grid.vertices[i, j].Y = (int)(Grid.vertices[i, j].Y * (double)Height / H);
+                        Grid.vertices[i, j].X = (int)(Grid.vertices[i, j].X * (double)pictureBox1.Width / W);
+                        Grid.vertices[i, j].Y = (int)(Grid.vertices[i, j].Y * (double)pictureBox1.Height / H);
                     }
                 Grid.DB.Resize(pictureBox1.Width, pictureBox1.Height);
                 if(Grid.background!=null)
@@ -29,8 +29,8 @@ namespace GK2
                 {
                     Grid.NormalMap.Resize(pictureBox1.Width, pictureBox1.Height);
                 }
-                W = Width;
-                H = Height;
+                W = pictureBox1.Width;
+                H = pictureBox1.Height;
                 Grid.UpdateAllGrid();
             }
         }

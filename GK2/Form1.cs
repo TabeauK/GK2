@@ -20,8 +20,8 @@ namespace GK2
             InitializeComponent();
             tableLayoutPanel2.AutoScroll = true;
             buttonPickColor.BackColor = Color.Crimson;
-            W = Width;
-            H = Height;
+            W = pictureBox1.Width;
+            H = pictureBox1.Height;
             Grid = new Grid(10, 10, pictureBox1, Color.Crimson);
         }
 
